@@ -141,20 +141,10 @@
             box-shadow: 0 10px 20px rgba(212, 123, 136, 0.2);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(212, 123, 136, 0.3);
-        }
-
         .btn-outline {
             border: 1px solid var(--text-main);
             color: var(--text-main);
             margin-left: 15px;
-        }
-
-        .btn-outline:hover {
-            background: var(--text-main);
-            color: var(--bg-card);
         }
 
         /* SECTION LAYOUTS */
@@ -234,11 +224,6 @@
 
         .item-card {
             text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .item-card:hover {
-            transform: translateY(-5px);
         }
 
         .item-card img {
@@ -272,12 +257,6 @@
             font-size: 0.8rem;
             text-decoration: none;
             color: var(--text-main);
-            transition: all 0.3s;
-        }
-
-        .btn-add-cart:hover {
-            background: var(--text-main);
-            color: var(--bg-card);
         }
 
         /* MIX & MATCH SUGGESTIONS */
@@ -366,11 +345,6 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: opacity 0.3s;
-        }
-
-        .btn-buy-look:hover {
-            opacity: 0.9;
         }
 
         /* FOOTER */
@@ -388,6 +362,94 @@
             filter: brightness(0) invert(1);
             opacity: 0.5;
         }
+
+        /* =========================================================
+           RESPONSIVE DESIGN (TỐI ƯU CHO ĐIỆN THOẠI & TABLET)
+           ========================================================= */
+        @media (max-width: 768px) {
+            /* Navbar thu gọn */
+            header {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            /* Banner (Hero) xếp dọc */
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 5%;
+            }
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+
+            /* Các Section chung */
+            section:not(.hero) {
+                padding: 50px 5%;
+            }
+            .section-header {
+                margin-bottom: 30px;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            /* Tủ đồ thu hẹp khoảng cách */
+            .wardrobe-column {
+                padding: 20px;
+                min-width: 100%; /* Tràn viền trên mobile */
+            }
+            .column-title {
+                font-size: 1.4rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .item-card img {
+                height: 180px;
+            }
+            .item-card h3 {
+                font-size: 0.9rem;
+            }
+            .item-card .price {
+                font-size: 1rem;
+            }
+
+            /* Gợi ý phối đồ (Outfit Cards) */
+            .outfit-images {
+                height: 400px; /* Hạ chiều cao ảnh bìa */
+            }
+            .outfit-info {
+                padding: 20px;
+            }
+            .outfit-info h3 {
+                font-size: 1.4rem;
+            }
+            .outfit-formula {
+                font-size: 0.75rem;
+                top: 10px;
+                left: 10px;
+                right: 10px; /* Cho chữ không bị tràn màn hình */
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -402,12 +464,12 @@
                 <li><a href="#home">Trang chủ</a></li>
                 <li><a href="#wardrobe">Phòng Thử Đồ</a></li>
                 <li><a href="#suggestions">Gợi Ý</a></li>
-                <li><a href="#buy" class="btn-buy-nav">Tới cửa hàng</a></li>
+                <li><a href="#buy" class="btn-buy-nav">Cửa hàng</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section (Đã khôi phục) -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Đồng bộ tủ đồ<br><span style="color: var(--text-accent); font-style: italic;">Nâng tầm phong cách</span></h1>
@@ -493,7 +555,7 @@
                 <div class="outfit-info">
                     <h3 class="serif">Bản Giao Hưởng Công Sở</h3>
                     <p>"Chỉ cần thêm set Áo Hai Dây và Blazer Hồng từ TrySync, chiếc quần ống rộng quen thuộc của bạn lập tức trở thành một bộ outfit công sở quyền lực, hiện đại nhưng không kém phần ngọt ngào."</p>
-                    <a href="#buy" class="btn-buy-look">Mua Set Áo Này (1.100.000₫)</a>
+                    <a href="#buy" class="btn-buy-look">Mua Set Áo Này (1.100k)</a>
                 </div>
             </div>
 
@@ -508,7 +570,7 @@
                 <div class="outfit-info">
                     <h3 class="serif">Quý Cô Ngọt Ngào</h3>
                     <p>"Tận dụng chân váy xếp ly dáng dài sẵn có, kết hợp cùng sắc hồng phớt từ thiết kế Blazer mới nhất của TrySync để tạo nên diện mạo tiểu thư thanh lịch cho những buổi tiệc trà cuối tuần."</p>
-                    <a href="#buy" class="btn-buy-look">Mua Set Áo Này (1.100.000₫)</a>
+                    <a href="#buy" class="btn-buy-look">Mua Set Áo Này (1.100k)</a>
                 </div>
             </div>
         </div>
