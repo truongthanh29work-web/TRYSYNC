@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrySync - Đồng bộ tủ đồ, Nâng tầm phong cách</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAFAF7;
+            --bg-card: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-light: #555555;
+            --text-accent: #D47B88;
+            --rose-gradient: linear-gradient(135deg, #E6A8AD 0%, #D47B88 100%);
+            --border-color: #EAEAE5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--bg-card);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+        }
+
+        .logo img {
+            height: 45px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-accent);
+        }
+
+        .btn-buy-nav {
+            background: var(--text-main);
+            color: var(--bg-card);
+            padding: 10px 24px;
+            border-radius: 30px;
+        }
+        
+        .btn-buy-nav:hover {
+            background: var(--text-accent);
+            color: var(--bg-card);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 85vh;
+            padding: 40px 5%;
+            background-color: var(--bg-card);
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--rose-gradient);
+            color: var(--bg-card);
+            box-shadow: 0 10px 20px rgba(212, 123, 136, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(212, 123, 136, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: var(--bg-card);
+        }
+
+        /* SECTION LAYOUTS */
+        section:not(.hero) {
+            padding: 90px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* DUAL WARDROBE SECTION */
+        .wardrobe-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .wardrobe-column {
+            flex: 1;
+            min-width: 300px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
+        }
+
+        .column-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .badge-personal {
+            background: #F0F0F0;
+            color: var(--text-light);
+        }
+
+        .badge-brand {
+            background: rgba(212, 123, 136, 0.1);
+            color: var(--text-accent);
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .item-card {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            background: var(--bg-color);
+        }
+
+        .item-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-card .price {
+            color: var(--text-accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-add-cart {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid var(--text-main);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--text-main);
+            color: var(--bg-card);
+        }
+
+        /* MIX & MATCH SUGGESTIONS */
+        .suggestions {
+            background-color: var(--text-main);
+            color: var(--bg-card);
+        }
+
+        .suggestions .section-header h2 {
+            color: var(--bg-card);
+        }
+
+        .suggestions .section-header p {
+            color: #CCCCCC;
+        }
+
+        .outfit-showcase {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .outfit-card {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .outfit-images {
+            height: 550px;
+            position: relative;
+        }
+
+        .outfit-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .outfit-formula {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .outfit-formula span {
+            color: var(--text-accent);
+        }
+
+        .outfit-info {
+            padding: 35px;
+        }
+
+        .outfit-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .outfit-info p {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .btn-buy-look {
+            display: block;
+            text-align: center;
+            background: var(--rose-gradient);
+            color: var(--bg-card);
+            padding: 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-buy-look:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 5%;
+            background-color: #000000;
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        footer img {
+            height: 35px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="#home"><img src="logo ngang.png" alt="TrySync"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#wardrobe">Phòng Thử Đồ</a></li>
+                <li><a href="#suggestions">Gợi Ý</a></li>
+                <li><a href="#buy" class="btn-buy-nav">Tới cửa hàng</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Đã khôi phục) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Đồng bộ tủ đồ<br><span style="color: var(--text-accent); font-style: italic;">Nâng tầm phong cách</span></h1>
+            <p>TrySync ứng dụng công nghệ thông minh để phân tích phong cách cá nhân, giúp bạn kết nối hoàn hảo những món đồ đang có với các xu hướng mới nhất từ cửa hàng.</p>
+            <div>
+                <a href="#suggestions" class="btn btn-primary">Xem gợi ý Outfit</a>
+                <a href="#wardrobe" class="btn btn-outline">Khám phá Tủ đồ</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="hero.png" alt="Trải nghiệm TrySync">
+        </div>
+    </section>
+
+    <!-- Dual Wardrobe Section -->
+    <section id="wardrobe">
+        <div class="section-header">
+            <h2>Đồng Bộ Phong Cách</h2>
+            <p>Trải nghiệm mua sắm thông minh: TrySync phân tích những món đồ bạn đang có và đề xuất các thiết kế mới nhất để tạo nên diện mạo hoàn hảo.</p>
+        </div>
+
+        <div class="wardrobe-container">
+            <!-- Cột 1: Tủ đồ cá nhân -->
+            <div class="wardrobe-column">
+                <h3 class="serif column-title">
+                    Tủ Đồ Của Bạn
+                    <span class="badge badge-personal">Có sẵn</span>
+                </h3>
+                <div class="item-grid">
+                    <div class="item-card">
+                        <img src="5.png" alt="Quần Ống Rộng Trắng">
+                        <h3>Quần Ống Rộng Trắng</h3>
+                        <p style="font-size: 0.8rem; color: #888;">Item cơ bản trong tủ đồ</p>
+                    </div>
+                    <div class="item-card">
+                        <img src="6.png" alt="Chân Váy Xếp Ly Be">
+                        <h3>Chân Váy Xếp Ly Be</h3>
+                        <p style="font-size: 0.8rem; color: #888;">Item cơ bản trong tủ đồ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cột 2: Tủ đồ doanh nghiệp -->
+            <div class="wardrobe-column">
+                <h3 class="serif column-title">
+                    TrySync Đề Xuất
+                    <span class="badge badge-brand">Hàng Mới</span>
+                </h3>
+                <div class="item-grid">
+                    <div class="item-card">
+                        <img src="3.png" alt="Áo Blazer Hồng">
+                        <h3>Áo Blazer Hồng</h3>
+                        <div class="price">850.000₫</div>
+                        <a href="#cart" class="btn-add-cart">Thêm vào giỏ</a>
+                    </div>
+                    <div class="item-card">
+                        <img src="4.png" alt="Áo Hai Dây Trắng">
+                        <h3>Áo Hai Dây Lụa</h3>
+                        <div class="price">250.000₫</div>
+                        <a href="#cart" class="btn-add-cart">Thêm vào giỏ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mix & Match Suggestions -->
+    <section id="suggestions" class="suggestions">
+        <div class="section-header">
+            <h2>Bản Phối Hoàn Hảo</h2>
+            <p>Hãy xem cách các sản phẩm mới từ TrySync "làm mới" hoàn toàn những chiếc quần và váy quen thuộc trong tủ đồ của bạn.</p>
+        </div>
+
+        <div class="outfit-showcase">
+            <!-- Gợi ý 1 -->
+            <div class="outfit-card">
+                <div class="outfit-images">
+                    <div class="outfit-formula">
+                        Blazer + Hai Dây + <span>Quần Ống Rộng (Của bạn)</span>
+                    </div>
+                    <img src="7.png" alt="Set 1">
+                </div>
+                <div class="outfit-info">
+                    <h3 class="serif">Bản Giao Hưởng Công Sở</h3>
+                    <p>"Chỉ cần thêm set Áo Hai Dây và Blazer Hồng từ TrySync, chiếc quần ống rộng quen thuộc của bạn lập tức trở thành một bộ outfit công sở quyền lực, hiện đại nhưng không kém phần ngọt ngào."</p>
+                    <a href="#buy" class="btn-buy-look">Mua Set Áo Này (1.100.000₫)</a>
+                </div>
+            </div>
+
+            <!-- Gợi ý 2 -->
+            <div class="outfit-card">
+                <div class="outfit-images">
+                    <div class="outfit-formula">
+                        Blazer + Hai Dây + <span>Chân Váy Xếp Ly (Của bạn)</span>
+                    </div>
+                    <img src="8.png" alt="Set 2">
+                </div>
+                <div class="outfit-info">
+                    <h3 class="serif">Quý Cô Ngọt Ngào</h3>
+                    <p>"Tận dụng chân váy xếp ly dáng dài sẵn có, kết hợp cùng sắc hồng phớt từ thiết kế Blazer mới nhất của TrySync để tạo nên diện mạo tiểu thư thanh lịch cho những buổi tiệc trà cuối tuần."</p>
+                    <a href="#buy" class="btn-buy-look">Mua Set Áo Này (1.100.000₫)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="logo ngang.png" alt="TrySync Logo">
+        <p>&copy; 2026 TrySync. Giải pháp mua sắm thông minh dựa trên tủ đồ cá nhân.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
